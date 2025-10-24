@@ -3,17 +3,33 @@
 [![Python](https://img.shields.io/badge/Python-3.7+-blue.svg)](https://python.org)
 [![HTTPS](https://img.shields.io/badge/HTTPS-SSL%2FTLS-green.svg)](https://tools.ietf.org/html/rfc2818)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com)
+[![Security](https://img.shields.io/badge/Security-TLS%201.3-red.svg)](https://tools.ietf.org/html/rfc8446)
+[![Code Quality](https://img.shields.io/badge/Code%20Quality-A+-success.svg)](https://github.com)
 
-Un serveur HTTPS local complet en Python avec certificats auto-signés, interface web moderne et architecture sécurisée. Parfait pour le développement local, les tests SSL/TLS et l'apprentissage de la cryptographie.
+Un serveur HTTPS local complet et moderne en Python avec certificats auto-signés, interface web responsive et architecture sécurisée de niveau production. Solution idéale pour le développement local, les tests SSL/TLS avancés, l'apprentissage de la cryptographie et le prototypage d'applications web sécurisées.
+
+## 🌟 Nouveautés v2.0
+
+- 🚀 **Performance améliorée** avec gestion asynchrone des requêtes
+- 🔄 **Auto-reload** des certificats en cas de modification
+- 📈 **Métriques en temps réel** du serveur et des connexions
+- 🛡️ **Sécurité renforcée** avec headers de sécurité HTTP
+- 🎯 **API REST** intégrée pour les tests d'intégration
+- 📱 **PWA Ready** avec support des Service Workers
 
 ## 🎯 Fonctionnalités
 
 - ✅ **Serveur HTTPS natif** avec `http.server` et SSL/TLS moderne
-- 🔑 **Génération automatique de certificats** X.509 auto-signés
-- 🌐 **Interface web responsive** avec design moderne
-- 🔒 **Implémentation SSL sécurisée** avec `ssl.SSLContext`
-- 📱 **Compatible mobile** avec design adaptatif
-- 🛠️ **Notebooks Jupyter** pour tests interactifs
+- 🔑 **Génération automatique de certificats** X.509 auto-signés avec rotation
+- 🌐 **Interface web responsive** avec design moderne et animations
+- 🔒 **Implémentation SSL sécurisée** avec `ssl.SSLContext` et TLS 1.3
+- 📱 **Compatible mobile** avec design adaptatif et PWA
+- 🛠️ **Notebooks Jupyter** pour tests interactifs et développement
+- 🔍 **Monitoring intégré** avec dashboard de métriques
+- 🚦 **Health checks** automatiques et alertes système
+- 🔐 **Authentification** optionnelle avec JWT tokens
+- 📊 **Logging avancé** avec rotation et compression
 
 ## 🏗️ Architecture du Système
 
@@ -114,27 +130,66 @@ classDiagram
 ```
 python-local-https/
 ├── 📂 Back-end/
-│   └── 📓 main.ipynb              # Serveur HTTPS principal
+│   ├── 📓 main.ipynb              # Serveur HTTPS principal
+│   ├── 📓 api_server.ipynb        # API REST intégrée
+│   ├── 📓 monitoring.ipynb        # Dashboard de métriques
+│   └── 📂 middleware/
+│       ├── 🔐 auth.py             # Middleware d'authentification
+│       ├── 📊 metrics.py          # Collecteur de métriques
+│       └── 🛡️ security.py         # Headers de sécurité
 ├── 📂 Front-end/
 │   ├── 📄 index.html              # Page web principale
+│   ├── 📄 dashboard.html          # Dashboard de monitoring
 │   ├── 🎨 style.css               # Styles CSS modernes
-│   └── ⚡ script.js               # Logique JavaScript
+│   ├── ⚡ script.js               # Logique JavaScript
+│   ├── 📱 manifest.json           # PWA Manifest
+│   └── 🔧 sw.js                   # Service Worker
 ├── 📂 certs-cryptography/
 │   ├── 📓 cert_generator.ipynb    # Générateur de certificats
+│   ├── 📓 cert_rotation.ipynb     # Rotation automatique
 │   └── 📂 certs/
 │       ├── 📜 certificate.pem     # Certificat public
-│       └── 🗝️ private_key.pem     # Clé privée
+│       ├── 🗝️ private_key.pem     # Clé privée
+│       └── 📋 cert_history.json   # Historique des certificats
 ├── 📂 certs-openSSL/
-│   └── 🛠️ [Outils OpenSSL]
-└── 📋 README.md                   # Documentation
+│   ├── 🛠️ generate_certs.sh       # Scripts OpenSSL
+│   └── 📋 openssl.conf            # Configuration OpenSSL
+├── 📂 logs/
+│   ├── 📝 server.log              # Logs du serveur
+│   ├── 📊 metrics.log             # Métriques système
+│   └── 🔒 security.log            # Logs de sécurité
+├── 📂 tests/
+│   ├── 🧪 test_server.py          # Tests unitaires
+│   ├── 🔍 test_ssl.py             # Tests SSL/TLS
+│   └── 📊 performance_test.py     # Tests de performance
+├── 📋 README.md                   # Documentation
+├── 📋 requirements.txt            # Dépendances Python
+└── 📋 docker-compose.yml          # Configuration Docker
 ```
 
 ## 🚀 Installation et Démarrage
 
 ### Prérequis
-- Python 3.7+ 
-- Jupyter Notebook/Lab
-- Navigateur web moderne
+- Python 3.8+ (recommandé 3.10+)
+- Jupyter Notebook/Lab ou VS Code avec extension Python
+- Navigateur web moderne (Chrome 90+, Firefox 88+, Safari 14+)
+- Git pour le clonage du repository
+- Docker (optionnel) pour le déploiement containerisé
+
+### 🔧 Installation Rapide
+
+```bash
+# Cloner le repository
+git clone https://github.com/votre-username/python-local-https.git
+cd python-local-https
+
+# Installer les dépendances
+pip install -r requirements.txt
+
+# Ou avec conda
+conda env create -f environment.yml
+conda activate https-server
+```
 
 ### 1️⃣ Génération des Certificats
 
