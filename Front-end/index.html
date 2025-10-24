@@ -7,12 +7,31 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>🔐 HTTPS Local Test</h1>
-        <p id="status">Checking connection...</p>
+    <nav class="navbar">
+        <div class="logo">🔐 HTTPS Local Test</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Docs</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to Your Secure Local Server 🌐</h1>
+        <p>Test your <strong>SSL/TLS certificates</strong> and ensure your local environment is fully encrypted.</p>
         <button id="btn">Send HTTPS Request</button>
+    </section>
+
+    <section class="result">
+        <h2>Server Response</h2>
+        <p id="status">Status: waiting...</p>
         <pre id="response"></pre>
-    </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ for <strong>Python + HTTPS</strong> | © 2025</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
